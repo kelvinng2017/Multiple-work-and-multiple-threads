@@ -6,7 +6,7 @@ import sys
 
 def recv_msg():
     while True:
-        recv_msg = conn.recv(1024)
+        recv_msg = s.recv(1024)
         if not recv_msg:
             sys.exit(0)
         recv_msg = recv_msg.decode()
@@ -16,8 +16,8 @@ def send_msg():
     while True:
         send_msg = input(str("Enter message: "))
         send_msg = send_msg.encode()
-        conn.send(send_msg)
-        print("message sent")
+        s.send(send_msg)
+        print("Message sent")
 
 # --- main ---
 
@@ -25,17 +25,10 @@ host = socket.gethostname()
 port = 8080
 
 s = socket.socket()
-s.bind((host, port))
-s.listen(1)
+s.connect((host, port))
 
-print("Waiting for connections")
-conn, addr = s.accept()
+print("Connected to the server")
 
-print("Client has connected")
-conn.send("Welcome to the server".encode())
-
-# thread has to start before other loop
-t = threading.Thread(target=recv_msg)
-t.start()
-
-send_msg()
+message = s.recv(1024)
+message = message.decode()
+print(message)

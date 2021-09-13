@@ -21,7 +21,7 @@ def send_msg():
 
 # --- main ---
 
-host = socket.gethostname()
+host = "192.168.0.85"
 port = 8080
 
 s = socket.socket()
