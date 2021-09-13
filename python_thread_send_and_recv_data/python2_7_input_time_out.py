@@ -1,7 +1,7 @@
 
 import sys, time, msvcrt
 
-def readInput( caption, default, timeout = 10):
+def readInput(caption, default, timeout = 10):
     start_time = time.time()
     sys.stdout.write('%s(%s):'%(caption, default))
     input = ''
@@ -22,7 +22,6 @@ def readInput( caption, default, timeout = 10):
         return default
 
 # and some examples of usage
-ans = readInput('Please type a name', 'john')
-print ('The name is %s' % ans)
-ans = readInput('Please enter a number', 10 )
-print ('The number is %s' % ans)
+ans = readInput('Please type a name', 'out_time_input')
+if(ans!= 'out_time_input'):
+    print ('The name is %s' % ans)
